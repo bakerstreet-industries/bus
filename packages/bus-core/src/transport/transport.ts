@@ -1,12 +1,21 @@
-import { Event, Command, MessageAttributes } from '@node-ts/bus-messages'
-import { CoreDependencies } from '../util'
+import { Command, Event, MessageAttributes } from '@node-ts/bus-messages'
 import { HandlerRegistry } from '../handler'
+import { CoreDependencies, TypedEmitter } from '../util'
 import { TransportMessage } from './transport-message'
 
 /**
  * A transport adapter interface that enables the service bus to use a messaging technology.
  */
 export interface Transport<TransportMessageType = {}> {
+  /**
+   * If configured on the transport, the bus instance will no longer poll the transport during its
+   * application loop, but in stead wait for this transport event to know when a message is received.
+   *
+   * @type {TypedEmitter<void>}
+   * @memberof Transport
+   */
+  messageReceived?: TypedEmitter<void>;
+
   /**
    * Publishes an event to the underlying transport. This is generally done to a topic or some other
    * mechanism that consumers can subscribe themselves to
@@ -24,12 +33,6 @@ export interface Transport<TransportMessageType = {}> {
    * additional information that travels with it.
    */
   send<TCommand extends Command> (command: TCommand, messageOptions?: MessageAttributes): Promise<void>
-
-  /**
-   * Forwards @param transportMessage to the dead letter queue. The message must have been read in from the
-   * queue and have a receipt handle.
-   */
-  fail (transportMessage: TransportMessage<unknown>): Promise<void>
 
   /**
    * Forwards @param transportMessage to the dead letter queue. The message must have been read in from the
