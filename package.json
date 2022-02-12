@@ -1,9 +1,9 @@
 {
-  "name": "@node-ts/bus",
+  "name": "@bakerstreet-industries/bus",
   "version": "0.0.1",
   "main": "index.js",
   "description": "A service bus for message-based, distributed node applications",
-  "repository": "github:node-ts/bus.git",
+  "repository": "github:bakerstreet-industries/bus.git",
   "license": "MIT",
   "private": true,
   "scripts": {

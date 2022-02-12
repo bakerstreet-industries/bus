@@ -1,12 +1,12 @@
 {
-  "name": "@node-ts/bus-test",
+  "name": "@bakerstreet-industries/bus-test",
   "version": "0.0.16",
   "description": "A dev-dependency package used to test transport implementations.",
   "homepage": "https://github.com/node-ts/bus#readme",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "repository": "github:node-ts/bus.git",
+  "repository": "github:bakerstreet-industries/bus.git",
   "scripts": {
     "build": "tsc --project tsconfig.json --declaration",
     "build:watch": "yarn run build --incremental --watch --preserveWatchOutput",

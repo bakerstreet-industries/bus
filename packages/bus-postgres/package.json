@@ -1,11 +1,11 @@
 {
-  "name": "@node-ts/bus-postgres",
+  "name": "@bakerstreet-industries/bus-postgres",
   "description": "A Postgres persistence adapter for workflow storage in @node-ts/bus-workflow.",
   "version": "1.0.12",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "repository": "github:node-ts/bus.git",
+  "repository": "github:bakerstreet-industries/bus.git",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "tsc --project tsconfig.json --declaration",

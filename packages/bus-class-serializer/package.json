@@ -1,10 +1,10 @@
 {
-  "name": "@node-ts/bus-class-serializer",
+  "name": "@bakerstreet-industries/bus-class-serializer",
   "version": "1.0.12",
   "description": "A JSON serializer for @node-ts/bus based on class-transformer for strong marshalling of messages",
   "homepage": "https://github.com/node-ts/bus#readme",
   "license": "MIT",
-  "repository": "github:node-ts/bus.git",
+  "repository": "github:bakerstreet-industries/bus.git",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "tsc --project tsconfig.json --declaration",

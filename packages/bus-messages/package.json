@@ -1,11 +1,11 @@
 {
-  "name": "@node-ts/bus-messages",
+  "name": "@bakerstreet-industries/bus-messages",
   "description": "A core set of message definitions for distributed applications.",
   "version": "1.0.4",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "repository": "github:node-ts/bus.git",
+  "repository": "github:bakerstreet-industries/bus.git",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "tsc --project tsconfig.json --declaration",
