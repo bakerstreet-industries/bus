@@ -1,6 +1,6 @@
 {
   "name": "@bakerstreet-industries/bus-core",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "A service bus for message-based, distributed node applications",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

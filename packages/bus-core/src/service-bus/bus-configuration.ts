@@ -1,19 +1,19 @@
 import { Message } from '@node-ts/bus-messages'
+import { ContainerAdapter } from '../container'
+import { ContainerNotRegistered } from '../error'
 import { DefaultHandlerRegistry, Handler } from '../handler'
 import { HandlerDefinition, isClassHandler } from '../handler/handler'
+import { defaultLoggerFactory, LoggerFactory } from '../logger'
+import { DefaultRetryStrategy, RetryStrategy } from '../retry-strategy'
 import { JsonSerializer, Serializer } from '../serialization'
+import { MessageSerializer } from '../serialization/message-serializer'
 import { MemoryQueue, Transport, TransportMessage } from '../transport'
 import { ClassConstructor, CoreDependencies, Middleware, MiddlewareDispatcher } from '../util'
-import { BusInstance } from './bus-instance'
 import { Persistence, Workflow, WorkflowState } from '../workflow'
-import { WorkflowRegistry } from '../workflow/registry/workflow-registry'
-import { BusAlreadyInitialized } from './error'
-import { ContainerAdapter } from '../container'
-import { defaultLoggerFactory, LoggerFactory } from '../logger'
-import { ContainerNotRegistered } from '../error'
-import { MessageSerializer } from '../serialization/message-serializer'
 import { InMemoryPersistence } from '../workflow/persistence'
-import { DefaultRetryStrategy, RetryStrategy } from '../retry-strategy'
+import { WorkflowRegistry } from '../workflow/registry/workflow-registry'
+import { BusInstance } from './bus-instance'
+import { BusAlreadyInitialized } from './error'
 
 export interface BusInitializeOptions {
   /**
@@ -85,6 +85,7 @@ export class BusConfiguration {
       await transport.initialize(this.handlerRegistry)
     }
     this.busInstance = new BusInstance(
+      sendOnly,
       transport,
       this.concurrency,
       this.workflowRegistry,
