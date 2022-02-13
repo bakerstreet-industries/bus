@@ -66,6 +66,7 @@ export class BusInstance {
   private logger: Logger;
 
   constructor(
+    private readonly sendOnly: boolean,
     private readonly transport: Transport<{}>,
     private readonly concurrency: number,
     private readonly workflowRegistry: WorkflowRegistry,
@@ -145,11 +146,15 @@ export class BusInstance {
     messageHandlingContext.enable();
 
     this.internalState = BusState.Started;
-    for (var i = 0; i < this.concurrency; i++) {
-      setTimeout(async () => this.applicationLoop(), 0);
-    }
+    if (!this.sendOnly) {
+      for (var i = 0; i < this.concurrency; i++) {
+        setTimeout(async () => this.applicationLoop(), 0);
+      }
 
-    this.logger.info(`Bus started with concurrency ${this.concurrency}`);
+      this.logger.info(`Bus started with concurrency ${this.concurrency}`);
+    } else {
+      this.logger.info(`Bus started in send only mode`);
+    }
   }
 
   /**
