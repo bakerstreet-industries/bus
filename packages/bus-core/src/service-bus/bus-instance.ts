@@ -231,16 +231,7 @@ export class BusInstance {
 
   private processUntilBusStop() {
     const threadMessageHandler = async () => {
-      this.transport.messageReceived!.off(threadMessageHandler);
-      this.logger.debug(
-        "Message Recieved notification has occurred. Turning off notifications for new messages."
-      );
       while ((await this.handleNextMessage()) === true) {}
-      // What happens if a notification occurs here?
-      this.transport.messageReceived!.on(threadMessageHandler);
-      this.logger.debug(
-        "Waiting for a message received notification from the transport."
-      );
     };
     return new Promise<void>((resolve) => {
       this.transport.messageReceived!.on(threadMessageHandler);
