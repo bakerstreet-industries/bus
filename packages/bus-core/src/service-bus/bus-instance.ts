@@ -231,7 +231,7 @@ export class BusInstance {
 
   private processUntilBusStop() {
     const threadMessageHandler = async () => {
-      while ((await this.handleNextMessage()) === true) {}
+      await this.handleNextMessage();
     };
     return new Promise<void>((resolve) => {
       this.transport.messageReceived!.on(threadMessageHandler);
